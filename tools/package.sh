@@ -20,18 +20,18 @@ rm -rf "$STAGE/tools" "$STAGE/.gitignore"
 
 # ---- store zip ----
 ZIP="dist/baisoku-${VERSION}.zip"
-(cd "$STAGE" && zip -r -q "../$ZIP" .)
+(cd "$STAGE" && zip -r -q "${OLDPWD}/$ZIP" .)
 echo "built $ZIP"
 
 # ---- CRX3 (self-signed, for Vivaldi/Edge/Chromium drag&drop) ----
-if npx -y crx3 --help >/dev/null 2>&1; then
-  KEY=".keys/crx3.pem"
-  [ -f "$KEY" ] || openssl genrsa -out "$KEY" 2048
-  npx -y crx3 -o "dist/baisoku-${VERSION}.crx" -x dist/updates.xml \
-      --crx-url "${BASE_URL}/baisoku-${VERSION}.crx" -p "$KEY" "$STAGE"
+KEY=".keys/crx3.pem"
+[ -f "$KEY" ] || openssl genrsa -out "$KEY" 2048
+if cat "$ZIP" | npx -y crx3 -o "dist/baisoku-${VERSION}.crx" -x dist/updates.xml \
+    --crxURL "${BASE_URL}/baisoku-${VERSION}.crx" --appVersion "${VERSION}" \
+    -p "$KEY"; then
   echo "built dist/baisoku-${VERSION}.crx + dist/updates.xml"
 else
-  echo "warning: crx3 unavailable, skipped CRX build" >&2
+  echo "warning: crx3 build failed, skipped CRX" >&2
 fi
 
 ls -la dist
