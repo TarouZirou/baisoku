@@ -7,9 +7,9 @@ Firefox / Chrome / Vivaldi に対応 (Manifest V3)。
 
 - **速度範囲**: 0.1x〜16x、0.1 ステップ
 - **3つの操作方法**
-  - キーボードショートカット: `Ctrl+Shift+↑` / `Ctrl+Shift+↓` / `Ctrl+Shift+0` (リセット)
-  - ポップアップUI: 対数スライダー + ±ボタン
-  - ホバーオーバーレイ: 動画にマウスを乗せると `− 2.0x + 1x` パネルを表示 (フルスクリーン対応)
+    - キーボードショートカット: `Ctrl+Shift+↑` / `Ctrl+Shift+↓` / `Ctrl+Shift+0` (リセット)
+    - ポップアップUI: 対数スライダー + ±ボタン
+    - ホバーオーバーレイ: 動画にマウスを乗せると `− 2.0x + 1x` パネルを表示 (フルスクリーン対応)
 - **ピッチ補正**: 高倍速でも音の高さを維持 (`preservesPitch`)
 - **高倍速ミュート**: しきい値以上の速度で自動ミュート (しきい値は設定可能)
 - **OSD表示**: 速度変更時に一瞬だけ現在の速度を表示
@@ -29,9 +29,9 @@ Firefox / Chrome / Vivaldi に対応 (Manifest V3)。
 1. `about:debugging#/runtime/this-firefox` を開く
 2. 「一時的なアドオンを読み込む…」で `manifest.json` を選択
 
-### Chrome / Vivaldi
+### Chrome
 
-1. `chrome://extensions` (Vivaldiは `vivaldi://extensions`) を開く
+1. `chrome://extensions`を開く
 2. デベロッパーモードを有効化
 3. 「パックされていない拡張機能を読み込む」でこのフォルダを選択
 
