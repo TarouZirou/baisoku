@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "baisoku",
+  "version": "1.0.0",
+  "description": "動画の再生速度を 0.1x〜16x で制御。ショートカット・ポップアップ・ホバーオーバーレイ。Firefox / Chrome / Vivaldi 対応。",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "baisoku",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "scripts": ["background.js"]
+  },
+  "commands": {
+    "speed-up": {
+      "suggested_key": { "default": "Ctrl+Shift+Up" },
+      "description": "再生速度を上げる (+0.1x)"
+    },
+    "speed-down": {
+      "suggested_key": { "default": "Ctrl+Shift+Down" },
+      "description": "再生速度を下げる (-0.1x)"
+    },
+    "speed-reset": {
+      "suggested_key": { "default": "Ctrl+Shift+0" },
+      "description": "再生速度を 1.0x に戻す"
+    }
+  },
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content/content.js"],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "baisoku@theningen.program",
+      "strict_min_version": "109.0"
+    }
+  }
+}

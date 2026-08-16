@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>baisoku</h1>
+    <button id="reset" title="1.0x に戻す">1x</button>
+  </header>
+
+  <div class="rate">
+    <button id="dec" aria-label="遅く">&minus;</button>
+    <output id="value">1.0x</output>
+    <button id="inc" aria-label="速く">+</button>
+  </div>
+
+  <input type="range" id="slider" min="0" max="1000" step="1" value="454" aria-label="再生速度">
+
+  <section class="options">
+    <label class="row">
+      <span>ピッチ補正 <small>(音の高さを保つ)</small></span>
+      <input type="checkbox" id="pitch">
+    </label>
+    <label class="row">
+      <span>高倍速でミュート</span>
+      <input type="checkbox" id="mute">
+    </label>
+    <div class="row sub" id="thresholdRow">
+      <label for="threshold">ミュートしきい値</label>
+      <select id="threshold">
+        <option value="2">2x</option>
+        <option value="3">3x</option>
+        <option value="4" selected>4x</option>
+        <option value="6">6x</option>
+        <option value="8">8x</option>
+        <option value="12">12x</option>
+        <option value="16">16x</option>
+      </select>
+    </div>
+  </section>
+
+  <footer>
+    <span>Ctrl+Shift+&uarr;/&darr; 速度</span>
+    <span>Ctrl+Shift+0 リセット</span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
